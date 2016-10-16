@@ -1,0 +1,1 @@
+web: gunicorn hub.hub:app --log-file -  
