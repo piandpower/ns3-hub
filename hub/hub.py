@@ -24,7 +24,7 @@ if DEBUG:
     
 public_ns.add_resource(input.Input, '/input')
 
-@ask.intent('HelloIntent')
+@ask.intent('Hello')
 def startup():
     text = render_template('start')
     print text
