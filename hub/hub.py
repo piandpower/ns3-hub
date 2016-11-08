@@ -1,4 +1,4 @@
-import os
+import os, logging
 from flask import Flask, request, render_template, jsonify
 from flask_restplus import Api
 from flask_ask import Ask, statement
@@ -8,6 +8,7 @@ from public import input
 
 app = Flask(__name__)
 ask = Ask(app, '/')
+logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 
 ROOT_URL = os.getenv('ROOT_URL', 'localhost')
 VERSION_NO = os.getenv('VERSION_NO', '1.0')
@@ -24,8 +25,8 @@ if DEBUG:
 public_ns.add_resource(input.Input, '/input')
 
 @ask.intent('HelloIntent')
-def startup(name):
-    text = render_template('start', firstname=name)
+def startup():
+    text = render_template('start')
     return statement(text)
 
 if __name__ == '__main__':
