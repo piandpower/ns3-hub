@@ -7,7 +7,7 @@ from flask_ask import Ask, statement
 from public import input
 
 app = Flask(__name__)
-ask = Ask(app, '/')
+ask = Ask(app, '/alexa')
 logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 
 ROOT_URL = os.getenv('ROOT_URL', 'localhost')
@@ -27,6 +27,7 @@ public_ns.add_resource(input.Input, '/input')
 @ask.intent('HelloIntent')
 def startup():
     text = render_template('start')
+    print text
     return statement(text)
 
 if __name__ == '__main__':
