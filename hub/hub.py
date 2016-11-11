@@ -37,7 +37,7 @@ def startup():
     return statement(text)
 
 def create_coherent_list(claim_arr):
-    converted = [claim.convert('ascii', errors='ignore') for claim in claim_arr]
+    converted = [str(claim).convert('ascii', errors='ignore') for claim in claim_arr]
     if len(converted) == 0:
         return "nothing"
     elif len(converted) == 1:
