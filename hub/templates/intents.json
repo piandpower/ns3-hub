@@ -2,6 +2,15 @@
     "intents": [
         {
             "intent": "Hello"
+        },
+        {
+            "intent": "GetNews",
+            "slots": [
+                {
+                    "name": "topic",
+                    "type": "AMAZON.LITERAL"
+                }
+            ]
         }
     ]
 }

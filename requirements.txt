@@ -1,3 +1,4 @@
 flask-restplus
 flask-ask
 gunicorn
+requests
