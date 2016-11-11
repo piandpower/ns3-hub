@@ -15,7 +15,7 @@ DEBUG = os.getenv('DEBUG', False)
 SENTIMENT_URL = os.getenv("SENTIMENT_URL", "https://ns3-sentiment.herokuapp.com/")
 SENTIMENT_ENDPOINT = os.getenv("SENTIMENT_ENDPOINT", 'api/v1/parse')
 ACQUIRE_URL = os.getenv("SENTIMENT_URL", "https://ns3-acquire.herokuapp.com/")
-ACQUIRE_ENDPOINT = os.getenv("ACQUIRE_ENDPOINT", 'api/v1/find')
+ACQUIRE_ENDPOINT = os.getenv("ACQUIRE_ENDPOINT", 'Public/articles/')
 print APP_NAME, VERSION_NO
 # api = Api(app, version=VERSION_NO, title=APP_NAME)
 
@@ -47,16 +47,12 @@ def create_coherent_list(claim_arr):
 
 @ask.intent("GetNews")
 def get_news(topic):
-    params = {
-        'topic' : topic
-    }
-    # articles = requests.get(ACQUIRE_URL + ACQUIRE_ENDPOINT, params=params)
-    # response = articles.json()
-    response = [0]
+    articles = requests.get(ACQUIRE_URL + ACQUIRE_ENDPOINT + topic)
+    response = articles.json()
     to_say = []
     for article in response:
         claim_params = {
-            'article': "Donald J. Trump is president-elect of the United States."
+            'article': article
         }
         claim = requests.post(SENTIMENT_URL + SENTIMENT_ENDPOINT, data=json.dumps(claim_params))
         to_say.append(claim.json())
