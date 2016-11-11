@@ -37,12 +37,13 @@ def startup():
     return statement(text)
 
 def create_coherent_list(claim_arr):
-    if len(claim_arr) == 0:
+    converted = [claim.convert('ascii', errors='ignore') for claim in claim_arr]
+    if len(converted) == 0:
         return "nothing"
-    elif len(claim_arr) == 1:
-        return claim_arr[0]
-    to_say = ', '.join(claim_arr[:-1])
-    to_say += 'and ' + claim_arr[-1]
+    elif len(converted) == 1:
+        return converted[0]
+    to_say = ', '.join(converted[:-1])
+    to_say += 'and ' + converted[-1]
     return to_say
 
 @ask.intent("GetNews")
