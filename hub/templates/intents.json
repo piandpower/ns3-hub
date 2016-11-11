@@ -8,7 +8,7 @@
             "slots": [
                 {
                     "name": "topic",
-                    "type": "AMAZON.LITERAL"
+                    "type": "TOPIC"
                 }
             ]
         }

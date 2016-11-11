@@ -48,6 +48,7 @@ def get_news(topic):
     }
     # articles = requests.get(ACQUIRE_URL + ACQUIRE_ENDPOINT, params=params)
     # response = articles.json()
+    response = [0]
     to_say = []
     for article in response:
         claim_params = {
