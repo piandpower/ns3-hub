@@ -13,9 +13,9 @@ VERSION_NO = os.getenv('VERSION_NO', '1.0')
 APP_NAME = os.getenv('APP_NAME', "Devil's Advocate")
 DEBUG = os.getenv('DEBUG', False)
 SENTIMENT_URL = os.getenv("SENTIMENT_URL", "https://ns3-sentiment.herokuapp.com/")
-SENTIMENT_ENDPOINT = os.getenv("SENTIMENT_ENDPOINT", 'parse')
+SENTIMENT_ENDPOINT = os.getenv("SENTIMENT_ENDPOINT", 'api/v1/parse')
 ACQUIRE_URL = os.getenv("SENTIMENT_URL", "https://ns3-acquire.herokuapp.com/")
-ACQUIRE_ENDPOINT = os.getenv("ACQUIRE_ENDPOINT", 'find')
+ACQUIRE_ENDPOINT = os.getenv("ACQUIRE_ENDPOINT", 'api/v1/find')
 print APP_NAME, VERSION_NO
 # api = Api(app, version=VERSION_NO, title=APP_NAME)
 
@@ -54,7 +54,7 @@ def get_news(topic):
         claim_params = {
             'article': "Donald J. Trump is president-elect of the United States."
         }
-        claim = requests.post(SENTIMENT_URL + SENTIMENT_ENDPOINT, params=claim_params)
+        claim = requests.post(SENTIMENT_URL + SENTIMENT_ENDPOINT, data=json.dumps(claim_params))
         to_say.append(claim.json()['claim'])
     sentence = create_coherent_list(to_say)
     return statement(render_template('news', topic=topic, opinion=sentence))
