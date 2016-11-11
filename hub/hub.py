@@ -55,7 +55,7 @@ def get_news(topic):
             'article': "Donald J. Trump is president-elect of the United States."
         }
         claim = requests.post(SENTIMENT_URL + SENTIMENT_ENDPOINT, params=claim_params)
-        to_say.append(claim.jsion()['claim'])
+        to_say.append(claim.json()['claim'])
     sentence = create_coherent_list(to_say)
     return statement(render_template('news', topic=topic, opinion=sentence))
 
