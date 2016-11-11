@@ -37,6 +37,10 @@ def startup():
     return statement(text)
 
 def create_coherent_list(claim_arr):
+    if len(claim_arr) == 0:
+        return "nothing"
+    elif len(claim_arr) == 1:
+        return claim_arr[0]
     to_say = ', '.join(claim_arr[:-1])
     to_say += 'and ' + claim_arr[-1]
     return to_say
@@ -55,7 +59,7 @@ def get_news(topic):
             'article': "Donald J. Trump is president-elect of the United States."
         }
         claim = requests.post(SENTIMENT_URL + SENTIMENT_ENDPOINT, data=json.dumps(claim_params))
-        to_say.append(claim.json()['claim'])
+        to_say.append(claim.json())
     sentence = create_coherent_list(to_say)
     return statement(render_template('news', topic=topic, opinion=sentence))
 
