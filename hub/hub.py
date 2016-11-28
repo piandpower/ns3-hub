@@ -43,6 +43,7 @@ MAX_ARTICLES = 3
 @ask.intent("GetNews")
 def get_news(topic):
     articles = requests.get(ACQUIRE_URL + ACQUIRE_ENDPOINT + topic)
+    print topic, articles
     response = articles.json()
     to_say = []
 
