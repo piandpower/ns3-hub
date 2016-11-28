@@ -14,7 +14,7 @@ APP_NAME = os.getenv('APP_NAME', "Devil's Advocate")
 DEBUG = os.getenv('DEBUG', False)
 SENTIMENT_URL = os.getenv("SENTIMENT_URL", "https://ns3-sentiment.herokuapp.com/")
 SENTIMENT_ENDPOINT = os.getenv("SENTIMENT_ENDPOINT", 'api/v1/parse')
-ACQUIRE_URL = os.getenv("SENTIMENT_URL", "https://ns3-acquire.herokuapp.com/")
+ACQUIRE_URL = os.getenv("ACQUIRE_URL", "https://ns3-acquire.herokuapp.com/")
 ACQUIRE_ENDPOINT = os.getenv("ACQUIRE_ENDPOINT", 'Public/articles/')
 print APP_NAME, VERSION_NO
 # api = Api(app, version=VERSION_NO, title=APP_NAME)
