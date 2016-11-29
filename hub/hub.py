@@ -35,7 +35,7 @@ def create_coherent_list(claim_arr):
     elif len(converted) == 1:
         return converted[0]
     to_say = ', '.join(converted[:-1])
-    to_say += ' and ' + converted[-1]
+    to_say += '. Also, ' + converted[-1]
     return to_say
 
 MAX_ARTICLES = 2
