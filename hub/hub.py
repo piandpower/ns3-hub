@@ -35,10 +35,10 @@ def create_coherent_list(claim_arr):
     elif len(converted) == 1:
         return converted[0]
     to_say = ', '.join(converted[:-1])
-    to_say += 'and ' + converted[-1]
+    to_say += ' and ' + converted[-1]
     return to_say
 
-MAX_ARTICLES = 3
+MAX_ARTICLES = 2
 
 @ask.intent("GetNews")
 def get_news(topic):
@@ -49,7 +49,7 @@ def get_news(topic):
     to_say = []
 
     for index, article in enumerate(response):
-        if index > MAX_ARTICLES:
+        if index >= MAX_ARTICLES:
             break
         claim_params = {
             'article': article
