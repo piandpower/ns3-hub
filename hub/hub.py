@@ -3,7 +3,7 @@ from flask import Flask, request, render_template, jsonify
 from flask_restplus import Api
 from flask_ask import Ask, statement
 import requests, json
-
+from pprint import pprint
 from public import input
 
 app = Flask(__name__)
@@ -56,7 +56,7 @@ def get_news(topic):
         }
         claim = requests.post(SENTIMENT_URL + SENTIMENT_ENDPOINT, data=json.dumps(claim_params))
         test = json.loads(str(claim.text))
-        print test
+        pprint(test)
         to_say.append(test[0])
     sentence = create_coherent_list(to_say)
     return statement(render_template('news', topic=topic, opinion=sentence))
