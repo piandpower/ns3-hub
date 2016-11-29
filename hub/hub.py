@@ -56,6 +56,7 @@ def get_news(topic):
         }
         claim = requests.post(SENTIMENT_URL + SENTIMENT_ENDPOINT, data=json.dumps(claim_params))
         to_say.append(claim.json()[0])
+    print to_say
     sentence = create_coherent_list(to_say)
     return statement(render_template('news', topic=topic, opinion=sentence))
 
