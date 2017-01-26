@@ -4,7 +4,7 @@ news: |
     Sure, here's what I've found in the news
     for {{ topic }}. Apparently,
     {% for result in opinions %}
-        {{ result.source }} says that {{ result.body }}
+        {{ result.source }} says that {{ result.article }}
         ,
         {% if result.and_say %}
             and

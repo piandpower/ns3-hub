@@ -53,11 +53,11 @@ def get_news(topic):
         if index >= MAX_ARTICLES:
             break
         claim_params = {
-            'article': article_data['body']
+            'article': article_data['article']
         }
         claim = requests.post(SENTIMENT_URL + SENTIMENT_ENDPOINT, data=json.dumps(claim_params))
         test = json.loads(claim.text)
-        article_data['body'] = test[0].encode('ascii', 'ignore')
+        article_data['article'] = test[0].encode('ascii', 'ignore')
         to_say.append(article_data)
     sentences = create_coherent_list(to_say)
     if len(sentences > 1):
