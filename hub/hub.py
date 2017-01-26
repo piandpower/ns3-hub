@@ -53,7 +53,7 @@ def get_news(topic):
         if index >= MAX_ARTICLES:
             break
         claim_params = {
-            'article': article_data.body
+            'article': article_data['body']
         }
         claim = requests.post(SENTIMENT_URL + SENTIMENT_ENDPOINT, data=json.dumps(claim_params))
         test = json.loads(claim.text)
