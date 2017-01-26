@@ -1,3 +1,13 @@
 start: Hello, how can I help you today?
 
-news: Sure, here's what I've found in the news for {{ topic }}. Apparently, {{ opinion }}, according to our sources.
+news: |
+    Sure, here's what I've found in the news
+    for {{ topic }}. Apparently,
+    {% for result in opinions %}
+        {{ result.source }} says that {{ result.body }}
+        ,
+        {% if result.and_say %}
+            and
+        {% endif}
+    {% endfor %}
+    according to our sources.
