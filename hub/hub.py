@@ -59,7 +59,7 @@ def get_news(topic):
         test = json.loads(claim.text)
         article_data['article'] = test[0].encode('ascii', 'ignore')
         to_say.append(article_data)
-    if len(to_say > 1):
+    if len(to_say) > 1:
         to_say[:-1]['and_say'] = True
     return statement(render_template('news', topic=topic, opinions=to_say))
 
