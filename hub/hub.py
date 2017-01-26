@@ -57,12 +57,16 @@ def get_news(topic):
         }
         claim = requests.post(SENTIMENT_URL + SENTIMENT_ENDPOINT, data=json.dumps(claim_params))
         test = json.loads(claim.text)
-        article_data['article'] = test[0].encode('ascii', 'ignore')
-        to_say.append(article_data)
+        article_final = {
+            'article': test[0].encode('ascii', 'ignore'),
+            'source': article_data['source'],
+            'url': article_data['url'],
+            'and_say': False
+        }
+        to_say.append(article_final)
     if len(to_say) > 1:
-        to_say[:-1]['and_say'] = True
+        to_say[-2]['and_say'] = True
     return statement(render_template('news', topic=topic, opinions=to_say))
 
 if __name__ == '__main__':
     app.run()
-    
