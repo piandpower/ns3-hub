@@ -1,6 +1,7 @@
 start: Hello, how can I help you today?
 
 news: |
+<speak>
     Sure, here's what I've found in the news
     for {{ topic }}. Apparently,
     {% for result in opinions %}
@@ -11,3 +12,4 @@ news: |
         {% endif %}
     {% endfor %}
     according to our sources.
+</speak>
