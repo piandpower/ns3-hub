@@ -59,10 +59,9 @@ def get_news(topic):
         test = json.loads(claim.text)
         article_data['article'] = test[0].encode('ascii', 'ignore')
         to_say.append(article_data)
-    sentences = create_coherent_list(to_say)
-    if len(sentences > 1):
-        sentences[:-1]['and_say'] = True
-    return statement(render_template('news', topic=topic, opinions=sentences))
+    if len(to_say > 1):
+        to_say[:-1]['and_say'] = True
+    return statement(render_template('news', topic=topic, opinions=to_say))
 
 if __name__ == '__main__':
     app.run()
