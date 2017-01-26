@@ -57,9 +57,11 @@ def get_news(topic):
         }
         claim = requests.post(SENTIMENT_URL + SENTIMENT_ENDPOINT, data=json.dumps(claim_params))
         test = json.loads(claim.text)
+        source = 'The New York Times' if article_data['source'] == 'New York Times' \
+            else article_data['source']
         article_final = {
             'article': test[0].encode('ascii', 'ignore'),
-            'source': article_data['source'],
+            'source': source,
             'url': article_data['url'],
             'and_say': False
         }

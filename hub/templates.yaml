@@ -8,6 +8,6 @@ news: |
         ,
         {% if result.and_say %}
             and
-        {% endif}
+        {% endif %}
     {% endfor %}
     according to our sources.
